@@ -627,43 +627,89 @@ section,
 
 /*--------------------------------------------------------------
 # Skills Section
+
 --------------------------------------------------------------*/
+
+/* Root Variables for Light and Dark Themes */
+:root {
+  --primary-font: "Poppins", sans-serif; /* Primary font for the site */
+  --primary-bg-color: #ffffff; /* Background color for light theme */
+  --primary-text-color: #000000; /* Text color for light theme */
+  --secondary-color: #575757; /* Secondary text color */
+  --btn-bg-light: #eeeeee; /* Light background color for buttons and skill boxes */
+  --glow-color: rgba(0, 255, 255, 0.5); /* Glow color for skill boxes */
+}
+
+/* General Body Styles */
+body {
+  margin: 0; /* Remove default margin */
+  font-family: var(--primary-font, "Arial, sans-serif"); /* Set primary font */
+  background-color: var(--primary-bg-color); /* Set background color */
+  color: var(--primary-text-color); /* Set text color */
+}
+
+/* Flexbox Layout for Skills Section */
 .skills {
-  --background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Stack items vertically */
+  margin-top: 2rem; /* Space above the skills section */
 }
 
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
+/* Section Title Styles */
+.section-title {
+  margin-bottom: 2rem; /* Space below the section title */
 }
 
-.skills .progress .skill {
-  color: var(--heading-color);
-  padding: 0;
-  margin: 0 0 6px 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  font-family: var(--heading-font);
+/* Wrapper for Each Skill Category */
+.wrapper {
+  margin-bottom: 2rem; /* Space between skill categories */
 }
 
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
+/* Subheading Styles */
+.subheading {
+  font-size: 1.2rem; /* Reduced font size for subheadings */
+  font-weight: 600; /* Bold font weight */
+  margin-bottom: 1rem; /* Space below subheading */
 }
 
-.skills .progress-bar-wrap {
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  height: 10px;
+/* Article Styles for Skill Categories */
+article {
+  display: flex; /* Enable flexbox for skill items */
+  flex-wrap: wrap; /* Allow skills to wrap to the next line */
+  gap: 0.5rem; /* Reduced space between skill items */
 }
 
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: 0.9s;
-  background-color: var(--accent-color);
+/* Individual Skill Item Styles */
+article p {
+  border-radius: 0.5rem; /* Rounded corners for skill boxes */
+  padding: 0.5rem; /* Reduced padding inside skill boxes */
+  background-color: var(--btn-bg-light); /* Background color for skill boxes */
+  flex-grow: 1; /* Allow skill items to grow and fill space */
+  text-align: center; /* Center text within skill boxes */
+  transition: box-shadow 0.3s ease; /* Smooth transition for glow effect */
+}
+
+/* Glow Effect on Skill Items */
+article p:hover {
+  box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); /* Glow effect on hover */
+}
+
+/* New Class for Horizontal Skills Layout */
+.horizontal-skills {
+  flex-direction: row; /* Align items horizontally */
+  justify-content: flex-start; /* Align items to the start */
+}
+
+/* Responsive Design for Larger Screens */
+@media screen and (min-width: 900px) {
+  .skills {
+    flex-direction: column; /* Keep vertical layout for smaller screens */
+    width: 100%; /* Set width for skills section to full */
+  }
+  .wrapper {
+    width: 100%; /* Set width for each skill category to full */
+    flex: none; /* Prevent flex-grow on wrapper */
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1064,29 +1110,30 @@ section,
 }
 
 .awards .section-title {
-  text-align: center;
-  margin-bottom: 30px;
+  text-align: left; /* Left align the section title */
+  margin-bottom: 30px; /* Space below the section title */
 }
 
 .awards .section-title h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 10px 0;
+  font-size: 24px; /* Font size for the heading */
+  font-weight: bold; /* Bold font weight */
+  margin: 10px 0; /* Margin above and below the heading */
+  /* Removed underline and padding */
 }
 
 .awards .section-title p {
-  font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-  margin: 0;
+  font-size: 16px; /* Font size for the paragraph */
+  color: color-mix(in srgb, var(--default-color), transparent 60%); /* Color for the paragraph */
+  margin: 0; /* No margin for the paragraph */
 }
 
 .awards .resume-item {
-  background-color: var(--contrast-color);
-  border-radius: 6px;
-  padding: 20px;
-  margin: 15px 0;
-  box-shadow: 0px 2px 15px color-mix(in srgb, var(--default-color), transparent 90%);
-  transition: transform 0.3s;
+  background-color: var(--contrast-color); /* Background color for resume items */
+  border-radius: 6px; /* Rounded corners */
+  padding: 20px; /* Padding inside resume items */
+  margin: 15px 0; /* Margin above and below resume items */
+  box-shadow: 0px 2px 15px color-mix(in srgb, var(--default-color), transparent 90%); /* Shadow effect */
+  transition: transform 0.3s; /* Transition effect for hover */
 }
 
 .awards .resume-item:hover {
@@ -1094,22 +1141,22 @@ section,
 }
 
 .awards .resume-item h4 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
+  font-size: 18px; /* Font size for resume item title */
+  font-weight: bold; /* Bold font weight */
+  margin: 10px 0 5px 0; /* Margin above and below the title */
 }
 
 .awards .resume-item h5 {
-  font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin: 5px 0;
+  font-size: 14px; /* Font size for resume item subtitle */
+  color: color-mix(in srgb, var(--default-color), transparent 50%); /* Color for subtitle */
+  margin: 5px 0; /* Margin above and below the subtitle */
 }
 
 .awards .resume-item p {
-  font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-  margin: 0;
-  font-style: italic;
+  font-size: 14px; /* Font size for additional information */
+  color: color-mix(in srgb, var(--default-color), transparent 70%); /* Color for additional information */
+  margin: 0; /* No margin for additional information */
+  font-style: italic; /* Italic style for additional information */
 }
 
 /*--------------------------------------------------------------
